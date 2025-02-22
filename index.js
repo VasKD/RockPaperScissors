@@ -22,44 +22,56 @@ function roundEval(compChoice, userChoice){
     if (compChoice == 0 && userChoice == 2){
         // rock vs scissors
         computerScore += 1;
-        alert("You Lose This Round! Rock beats Scissors \nScore: " + computerScore + " : " + userScore);
+        alert("You Lose This Round! Rock beats Scissor");
     } else if (compChoice == 1 && userChoice == 0){
         // paper vs rock
         computerScore += 1;
-        alert("You Lose This Round! Paper beats Rock \nScore: " + computerScore + " : " + userScore);
+        alert("You Lose This Round! Paper beats Roc");
     } else if (compChoice == 2 && userChoice == 1){
         // scissors vs paper
         computerScore += 1;
-        alert("You Lose This Round! Scissors beats Paper  \nScore: " + computerScore + " : " + userScore);
+        alert("You Lose This Round! Scissors beats Paper");
     } else if (userChoice == 0 && compChoice == 2){
         // rock vs scissors
         userScore += 1;
-        alert("You Win This Round! Rock beats Scissors  \nScore: " + computerScore + " : " + userScore);
+        alert("You Win This Round! Rock beats Scissors");
     } else if (userChoice == 1 && compChoice == 0){
         // paper vs rock
         userScore += 1;
-        alert("You Win This Round! Paper beats Rock  \nScore: " + computerScore + " : " + userScore);
+        alert("You Win This Round! Paper beats Rock");
     } else if (userChoice == 2 && compChoice == 1){
         // scissors vs paper
         userScore += 1;
-        alert("You Win This Round! Scissors beats Paper  \nScore: " + computerScore + " : " + userScore);
+        alert("You Win This Round! Scissors beats Paper");
     } else if (compChoice == userChoice){
         alert("Tie!")
     }
 }
 
 function playGame() {
-    for (let i = 1; i < 6; i++) {
-        const compChoice = getComputerChoice();
-        const userChoice = getHumanChoice(i);
-        roundEval(compChoice, userChoice);
-    }
+    const buttons = document.querySelectorAll(".btn");
 
-    if (userScore > computerScore){
-        alert("Congrats you win the game!!")
-    } else {
-        alert("Aww, you lose. Try again.")
-    }
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const userChoice = button.id;
+            const compChoice = getComputerChoice();
+            const score = document.querySelector("#score");
+            roundEval(compChoice, userChoice);
+            if (userScore == 5){
+                alert("Congrats you win the game!!");
+                userScore = 0;
+                computerScore = 0;
+            } else if (computerScore == 5){
+                alert("Aww, you lose. Try again.");
+                userScore = 0;
+                computerScore = 0;
+            }
+            score.textContent = "Score: " + userScore + " : " + computerScore;
+
+        });
+    });
+
+    
 }
 
 playGame();
