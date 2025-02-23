@@ -5,6 +5,7 @@ let computerScore = 0;
 let userScore = 0;
 
 const p = document.getElementById("messages");
+const roundMessage = document.getElementById("roundMessage");
 
 
 function getComputerChoice(){
@@ -85,16 +86,17 @@ function playGame() {
             roundEval(compChoice, userChoice);
 
             score.textContent = userScore + " : " + computerScore;
+            roundMessage.textContent = "";
 
 
             if (userScore == 5){
-                // alert("Congrats you win the game!!");
+                roundMessage.innerHTML = "Congratulations! You Win The Game! <br>Press Any Button To Start A New Game!"
                 userScore = 0;
                 computerScore = 0;
                 p.textContent = "";
                 score.textContent = "";
             } else if (computerScore == 5){
-                // alert("Aww, you lose. Try again.");
+                roundMessage.innerHTML = "Aww, You Lose! Try Again. <br>Press Any Button To Start A New Game!"
                 userScore = 0;
                 computerScore = 0;
                 p.textContent = "";
