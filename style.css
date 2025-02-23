@@ -44,6 +44,7 @@ h2 {
     color: white;
 }
 
+
 #buttons {
     display: flex;
     gap: 50px;
@@ -74,3 +75,19 @@ h2 {
 }
 
 
+div#bottom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+}
+
+
+p {
+    font-family: "Pixelify Sans";
+    font-weight: 100;
+    font-size: 20px;
+    color: white;
+    margin: 0;
+}

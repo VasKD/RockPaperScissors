@@ -1,8 +1,11 @@
 // Initialize list of possible options
 let options = ["rock", "paper", "scissors"];
 
-computerScore = 0;
-userScore = 0;
+let computerScore = 0;
+let userScore = 0;
+
+const p = document.getElementById("messages");
+
 
 function getComputerChoice(){
     // Randomly choose a number between 0 and 2 (indices of list)
@@ -22,29 +25,29 @@ function roundEval(compChoice, userChoice){
     if (compChoice == 0 && userChoice == 2){
         // rock vs scissors
         computerScore += 1;
-        alert("You Lose This Round! Rock beats Scissor");
+        p.textContent = "You Lose This Round! Rock Beats Scissors";
     } else if (compChoice == 1 && userChoice == 0){
         // paper vs rock
         computerScore += 1;
-        alert("You Lose This Round! Paper beats Rock");
+        p.textContent = "You Lose This Round! Paper Beats Rock";
     } else if (compChoice == 2 && userChoice == 1){
         // scissors vs paper
         computerScore += 1;
-        alert("You Lose This Round! Scissors beats Paper");
+        p.textContent = "You Lose This Round! Scissors Beats Paper";
     } else if (userChoice == 0 && compChoice == 2){
         // rock vs scissors
         userScore += 1;
-        alert("You Win This Round! Rock beats Scissors");
+        p.textContent = "You Win This Round! Rock Beats Scissors";
     } else if (userChoice == 1 && compChoice == 0){
         // paper vs rock
         userScore += 1;
-        alert("You Win This Round! Paper beats Rock");
+        p.textContent = "You Win This Round! Paper Beats Rock";
     } else if (userChoice == 2 && compChoice == 1){
         // scissors vs paper
         userScore += 1;
-        alert("You Win This Round! Scissors beats Paper");
+        p.textContent = "You Win This Round! Scissors Beats Paper";
     } else if (compChoice == userChoice){
-        alert("Tie!")
+        p.textContent = "Tie!"
     }
 }
 
@@ -58,7 +61,7 @@ function playGame() {
         scissors.src = isOpen ? "./Images/Opened_Scissors.png" : "Images/Closed_Scissors.png";
         cycleCount++;
 
-        if (cycleCount != 4) {
+        if (cycleCount < 4) {
             setTimeout(animateScissors, 150);
         } else {
             setTimeout(() => {
@@ -80,16 +83,23 @@ function playGame() {
             const compChoice = getComputerChoice();
             const score = document.querySelector("#score");
             roundEval(compChoice, userChoice);
+
+            score.textContent = userScore + " : " + computerScore;
+
+
             if (userScore == 5){
-                alert("Congrats you win the game!!");
+                // alert("Congrats you win the game!!");
                 userScore = 0;
                 computerScore = 0;
+                p.textContent = "";
+                score.textContent = "";
             } else if (computerScore == 5){
-                alert("Aww, you lose. Try again.");
+                // alert("Aww, you lose. Try again.");
                 userScore = 0;
                 computerScore = 0;
+                p.textContent = "";
+                score.textContent = "";
             }
-            score.textContent = "Score: " + userScore + " : " + computerScore;
 
         });
     });
