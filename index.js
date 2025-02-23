@@ -90,7 +90,7 @@ function playGame() {
 
 
             if (userScore == 5){
-                roundMessage.innerHTML = "Congratulations! You Win The Game! <br>Press Any Button To Start A New Game!"
+                roundMessage.innerHTML = "Congratulations! You Win! <br>Press Any Button To Start A New Game!"
                 userScore = 0;
                 computerScore = 0;
                 p.textContent = "";
