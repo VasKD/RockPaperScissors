@@ -49,6 +49,29 @@ function roundEval(compChoice, userChoice){
 }
 
 function playGame() {
+    const scissors = document.getElementById("scissors");
+    let isOpen = true;
+    let cycleCount = 0;
+
+    function animateScissors() {
+        isOpen = !isOpen;
+        scissors.src = isOpen ? "./Images/Opened_Scissors.png" : "Images/Closed_Scissors.png";
+        cycleCount++;
+
+        if (cycleCount != 4) {
+            setTimeout(animateScissors, 150);
+        } else {
+            setTimeout(() => {
+                cycleCount = 0;
+                animateScissors();
+            }, 1500);
+            
+        }
+    }
+
+    animateScissors();
+
+
     const buttons = document.querySelectorAll(".btn");
 
     buttons.forEach((button) => {
