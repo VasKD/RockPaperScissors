@@ -26,7 +26,7 @@ function roundEval(compChoice, userChoice){
     } else if (compChoice == 1 && userChoice == 0){
         // paper vs rock
         computerScore += 1;
-        alert("You Lose This Round! Paper beats Roc");
+        alert("You Lose This Round! Paper beats Rock");
     } else if (compChoice == 2 && userChoice == 1){
         // scissors vs paper
         computerScore += 1;
